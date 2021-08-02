@@ -7,4 +7,23 @@ describe('blog-site routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
+  it('creates a user account on blog site via POST', async () => {
+    const user = {
+      firstName: 'Sandra',
+      lastName: 'Bland',
+      email: 'sandy.bland@sayhername.com',
+      userName: 'SBland2015'
+    };
+
+    const res = await request(app)
+      .post('/api/v1/users')
+      .send(user);
+    
+    expect(res.body).toEqual({
+      id: '1',
+      ...user,
+      mailPreview: expect.any(String)
+    });
+  });
 });
