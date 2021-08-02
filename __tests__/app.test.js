@@ -13,7 +13,8 @@ describe('blog-site routes', () => {
       firstName: 'Sandra',
       lastName: 'Bland',
       email: 'sandy.bland@sayhername.com',
-      userName: 'SBland2015'
+      userName: 'SBland2015',
+      pin: '0713'
     };
 
     const res = await request(app)
