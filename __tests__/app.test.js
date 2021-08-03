@@ -28,5 +28,39 @@ describe('user account blog-site routes', () => {
     });
   });
 
+  it('gets all users via GET', async () => {
+    const user1 = {
+      id: '1',
+      firstName: 'Sandra',
+      lastName: 'Bland',
+      email: 'sandy.bland@sayhername.com',
+      userName: 'SBland2015',
+      pin: '0713'
+    };
+
+    const user2 = {
+      id: '2',
+      firstName: 'Elijah',
+      lastName: 'McClain',
+      email: 'e.mcclain2019@icantbreathe.com',
+      userName: 'JustDifferent_Introvert23',
+      pin: '0830'
+    };
+
+    const user3 = {
+      id: '3',
+      firstName: 'Philando',
+      lastName: 'Castille',
+      email: 'philando_dad32@imaneducator.edu',
+      userName: 'PC_loveskids2016',
+      pin: '0706'
+    };
+
+    return request(app).get('/api/v1/users')
+      .then((res) => {
+        expect(res.body).toEqual([user1, user2, user3]);
+      });
+  });
+
 });
 
