@@ -27,4 +27,6 @@ describe('blog-site routes', () => {
       mailPreview: expect.any(String)
     });
   });
+
 });
+
