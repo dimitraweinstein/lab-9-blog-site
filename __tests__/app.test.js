@@ -109,8 +109,7 @@ describe('user account blog-site routes', () => {
       .delete(`/api/v1/users/${user.id}`);
     
     expect(res.body).toEqual({
-      id: '3',
-      ...user,
+      message: `${user.firstName} blog site account has been successfully deleted.`,
       mailPreview: expect.any(String)
     });
   });
