@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const User = require('../lib/models/user');
 
 describe('user account blog-site routes', () => {
   beforeEach(() => {
@@ -29,32 +30,32 @@ describe('user account blog-site routes', () => {
   });
 
   it('gets all users via GET', async () => {
-    const user1 = {
+    const user1 = await User.insert({
       id: '1',
       firstName: 'Sandra',
       lastName: 'Bland',
       email: 'sandy.bland@sayhername.com',
       userName: 'SBland2015',
       pin: '0713'
-    };
+    });
 
-    const user2 = {
+    const user2 = await User.insert({
       id: '2',
       firstName: 'Elijah',
       lastName: 'McClain',
       email: 'e.mcclain2019@icantbreathe.com',
       userName: 'JustDifferent_Introvert23',
       pin: '0830'
-    };
+    });
 
-    const user3 = {
+    const user3 = await User.insert({
       id: '3',
       firstName: 'Philando',
       lastName: 'Castille',
       email: 'philando_dad32@imaneducator.edu',
       userName: 'PC_loveskids2016',
       pin: '0706'
-    };
+    });
 
     return request(app).get('/api/v1/users')
       .then((res) => {
