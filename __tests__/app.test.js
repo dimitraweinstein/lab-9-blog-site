@@ -63,5 +63,20 @@ describe('user account blog-site routes', () => {
       });
   });
 
+  it('gets one user by id via GET', async () => {
+    const user = await User.insert({
+      id: '2',
+      firstName: 'Elijah',
+      lastName: 'McClain',
+      email: 'e.mcclain2019@icantbreathe.com',
+      userName: 'JustDifferent_Introvert23',
+      pin: '0830'
+    });
+
+    const res = await request(app).get(`/api/v1/users/${user.id}`);
+
+    expect(res.body).toEqual(user);
+  });
+
 });
 
