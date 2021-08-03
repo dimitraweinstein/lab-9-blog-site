@@ -78,5 +78,22 @@ describe('user account blog-site routes', () => {
     expect(res.body).toEqual(user);
   });
 
+  it('updates user info by id via PUT', async () => {
+    const user = await User.insert({
+      id: '3',
+      firstName: 'Philando',
+      lastName: 'Castille',
+      email: 'philando_dad32@imaneducator.edu',
+      userName: 'PC_loveskids2016',
+      pin: '0706'
+    });
+
+    const res = await request(app)
+      .put(`/api/v1/users/${user.id}`)
+      .send({ userName: 'P_Castille_BLM' });
+    
+    expect(res.body).toEqual({ ...user, userName: 'P_Castille_BLM' });
+  });
+
 });
 
