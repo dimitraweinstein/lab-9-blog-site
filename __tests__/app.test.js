@@ -3,6 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const User = require('../lib/models/user');
+const { insert } = require('../lib/models/user');
 
 describe('user account blog-site routes', () => {
   beforeEach(() => {
@@ -10,13 +11,13 @@ describe('user account blog-site routes', () => {
   });
 
   it('creates a user account on blog site via POST', async () => {
-    const user = {
+    const user = await insert({
       firstName: 'Sandra',
       lastName: 'Bland',
       email: 'sandy.bland@sayhername.com',
       userName: 'SBland2015',
       pin: '0713'
-    };
+    });
 
     const res = await request(app)
       .post('/api/v1/users')
@@ -110,7 +111,7 @@ describe('user account blog-site routes', () => {
     
     expect(res.body).toEqual({
       message: `${user.firstName} blog site account has been successfully deleted.`,
-      mailPreview: expect.any(String)
+      mailPreview2: expect.any(String)
     });
   });
 
