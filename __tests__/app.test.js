@@ -11,13 +11,13 @@ describe('user account blog-site routes', () => {
   });
 
   it('creates a user account on blog site via POST', async () => {
-    const user = await insert({
+    const user = {
       firstName: 'Sandra',
       lastName: 'Bland',
       email: 'sandy.bland@sayhername.com',
       userName: 'SBland2015',
       pin: '0713'
-    });
+    };
 
     const res = await request(app)
       .post('/api/v1/users')
