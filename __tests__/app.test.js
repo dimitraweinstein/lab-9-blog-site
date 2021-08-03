@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('blog-site routes', () => {
+describe('user account blog-site routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
